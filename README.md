@@ -1,8 +1,8 @@
 # Recipes API
 
 ### Startup
-This spring boot API can be startup up by simply running the default start configuration in your IDE and running a 
-MongoDB in the default port. 
+This spring boot API can be startup up by simply running the default start configuration in your IDE and running a
+MongoDB in the default port. Please add a database named 'Recipes', and a collection named 'Recipe'.
 If a different URL or port is used, please update the following property in the applications.properties file:
 spring.data.mongodb.uri=mongodb://localhost:27017/Recipes
 
@@ -28,3 +28,11 @@ http://localhost:8080/recipes/filtered?servings=2&vegetarian=false&includeIngred
 ### Tests
 The Recipe service is unit tested in RecipesServiceTest.
 The API is integrated tested in RecipesApiApplicationIT
+
+### Architectural choices
+My choices on what stack to use relied on what I consider relevant in the current development world.
+I used springboot 3 and Java 17 which are relatively new, along with MongoDB which I chose because I have experience with it.
+
+I've decided to pre-load a couple of recipes since I prefer keeping the service independent of database setup and
+loading. This way one can merely start a mongoDb instance in default mode, add a Recipes Database and Recipe collection
+and start using this API. It's easy to add new json recipes based on the default response.
