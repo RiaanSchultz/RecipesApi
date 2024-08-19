@@ -45,7 +45,7 @@ public class RecipesService {
         recipe.setVegetarian(filters.get(RecipeFilters.VEGETARIAN.value) != null ?
                 Boolean.valueOf(filters.get(RecipeFilters.VEGETARIAN.value)) : null);
         recipe.setIngredients(filters.get(RecipeFilters.INCLUDE_INGREDIENTS.value) != null ?
-                Set.of(filters.get(RecipeFilters.INCLUDE_INGREDIENTS.value)) : null);
+                Set.of(filters.get(RecipeFilters.INCLUDE_INGREDIENTS.value).split(",")) : null);
         recipe.setInstructions(filters.get(RecipeFilters.INSTRUCTIONS.value));
 
         ExampleMatcher filter = ExampleMatcher.matching()

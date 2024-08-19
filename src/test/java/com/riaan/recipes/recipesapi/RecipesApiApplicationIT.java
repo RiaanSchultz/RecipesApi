@@ -38,7 +38,7 @@ class RecipesApiApplicationIT {
     @Test
     public void test_getAllRecipes() throws Exception {
 
-        File initialState = new ClassPathResource("test_recipes.json").getFile();
+        File initialState = new ClassPathResource("initial_recipes.json").getFile();
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         List<Recipe> expectedResponse = objectMapper.readValue(initialState, new TypeReference<>() {
         });
@@ -58,25 +58,26 @@ class RecipesApiApplicationIT {
     @Test
     public void test_getFilteredRecipes() throws Exception {
 
-        File initialState = new ClassPathResource("test_recipes.json").getFile();
+        File initialState = new ClassPathResource("initial_recipes.json").getFile();
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         List<Recipe> expectedResponse = objectMapper.readValue(initialState, new TypeReference<>() {
         });
 
         final int servings = 2;
-        final boolean vegetarian = false;
-        final String includeIngredients = "appel2";
-        final String excludeIngredients = "ui";
-        final String instructions = "ucts";
+        final boolean vegetarian = true;
+        final String includeIngredients = "apple";
+        final String excludeIngredients = "steak";
+        final String instructions = "fruit";
 
-        List<Recipe> expectedFilterResponse = expectedResponse.stream().filter(recipe -> ((recipe.getVegetarian() == vegetarian) &&
+        List<Recipe> expectedFilterResponse = expectedResponse.stream().filter(recipe -> (
+                (recipe.getVegetarian() == vegetarian) &&
                 (recipe.getServings() == servings) &&
                 recipe.getIngredients().contains(includeIngredients) &&
                 !recipe.getIngredients().contains(excludeIngredients) &&
                 recipe.getInstructions().contains(instructions))
         ).toList();
 
-        mvc.perform(get("/recipes/filtered") //?servings=2&vegetarian=false&includeIngredients=appel&instructions=ucts&excludeIngredients=ui")
+        mvc.perform(get("/recipes/filtered")
                         .param("servings", String.valueOf(servings))
                         .param("vegetarian", Boolean.toString(vegetarian))
                         .param("includeIngredients", includeIngredients)
