@@ -1,0 +1,18 @@
+[
+  {
+    "_class": "com.riaan.recipes.recipesapi.dtos.Recipe",
+    "id": "123",
+    "vegetarian": true,
+    "servings": 2,
+    "ingredients": ["apple", "banana", "strawberries"],
+    "instructions": "Dice up all fruit and place in bowl"
+  },
+  {
+    "_class": "com.riaan.recipes.recipesapi.dtos.Recipe",
+    "id": "456",
+    "vegetarian": false,
+    "servings": 2,
+    "ingredients": ["steak"],
+    "instructions": "Heat pan to high, place steak in pan for 4 minutes, turn and remove after another 3 minutes"
+  }
+]

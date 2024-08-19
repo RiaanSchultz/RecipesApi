@@ -1,0 +1,18 @@
+[
+  {
+    "_class": "com.riaan.recipes.recipesapi.dtos.Recipe",
+    "id": "123",
+    "vegetarian": false,
+    "servings": 2,
+    "ingredients": ["appel", "ui"],
+    "instructions": "someinstructs"
+  },
+  {
+    "_class": "com.riaan.recipes.recipesapi.dtos.Recipe",
+    "id": "456",
+    "vegetarian": false,
+    "servings": 2,
+    "ingredients": ["appel2", "ui2"],
+    "instructions": "someinstructs2"
+  }
+]
